@@ -1,10 +1,11 @@
-# 让用户选择何事退出
+# _*_coding:UTF-8 _*     _
+
 # prompt = "\nTell me somethings , and i will repeat it back to you:"
 # prompt += "\nEnter 'quit' to end the program. "
 # message = ""
 #
 # while message != 'quit':
-#     message = input(prompt)
+#     message = input(prompt)# -*- coding:UTF-8 -*-
 #     if message != 'quit':
 #         print(message)
 
@@ -19,8 +20,6 @@
 #     else:
 #         print(message)
 
-
-# 使用break 退出循环
 # prompt = "\nPlease enter the name of a city you have visited:"
 # prompt += "\n（Enter 'quit' when you are finished.）"
 #
@@ -161,16 +160,9 @@ def get_formatted_name(first_name, last_name, middle_name=''):
     if middle_name:
         full_name = first_name + ' ' + middle_name + ' ' + last_name
     else:
-
-        full_name = \
-
-
-
-
-
-
-
-            .print()first_name + ' ' + last_name
+        full_name = first_name + ' ' + last_name
     return full_name.title()
+
 musician = get_formatted_name('jimi', 'hendrix')
 print(musician)
+
