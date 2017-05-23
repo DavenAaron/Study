@@ -1,5 +1,3 @@
-# _*_coding:UTF-8 _*     _
-
 # prompt = "\nTell me somethings , and i will repeat it back to you:"
 # prompt += "\nEnter 'quit' to end the program. "
 # message = ""
@@ -156,13 +154,59 @@
 # musician = get_formatted_name('john', 'lee', 'hooker')
 # print(musician)
 
-def get_formatted_name(first_name, last_name, middle_name=''):
-    if middle_name:
-        full_name = first_name + ' ' + middle_name + ' ' + last_name
-    else:
-        full_name = first_name + ' ' + last_name
+# 设置参数默认值， 如果实参未赋值，则使用参数默认值,实参已赋值
+# def get_formatted_name(first_name, last_name, middle_name=''):
+#     if middle_name:
+#         full_name = first_name + ' ' + middle_name + ' ' + last_name
+#     else:
+#         full_name = first_name + ' ' + last_name
+#     return full_name.title()
+#
+# musician = get_formatted_name('jimi', 'hendrix')
+# print(musician)
+
+# 实参已赋值，优先使用实参值
+# def get_formatted_name(first_name, last_name, middle_name=' '):
+#     if middle_name:
+#         full_name = first_name + ' ' + middle_name + ' ' + last_name
+#     else:
+#         full_name = first_name + ' ' + last_name
+#     return full_name.title()
+# musician = get_formatted_name('jimi', 'hendrix', 'tomcat')
+# print(musician)
+
+# 返回字典
+# def build_person(first_name, last_name):
+#     person = {'first':first_name, 'last':last_name}
+#     return person
+# musician = build_person('jimi', 'hendrix')
+# print(musician)
+
+# def build_persion(first_name, last_name, age=''):
+#     person = {'first':first_name, 'last':last_name, 'age':age}
+#     if age:
+#         person['age'] = age
+#     return person
+#
+# musician = build_persion('jimi', 'hendrix')
+# print(musician)
+
+
+# 结合使用函数和while循环
+def get_formatted_name(first_name, last_name):
+    full_name = first_name + ' ' + last_name
     return full_name.title()
 
-musician = get_formatted_name('jimi', 'hendrix')
-print(musician)
+while True:
+    print("\nPlease tell me your name:")
+    print("\nEnter 'q' at any time to quit ! " )
 
+    f_name = input("Enter first name: ")
+    if f_name == 'q':
+        break
+
+    l_name = input("Enter last name: ")
+    if l_name == 'q':
+        break
+    formatted_name = get_formatted_name(f_name, l_name)
+    print("\nHello, " + formatted_name + "!")
