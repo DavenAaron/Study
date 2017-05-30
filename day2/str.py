@@ -140,6 +140,10 @@
 # print(' '.join(lst))
 # print(','.join(lst))
 
+# a = 'zhang'
+# b = 'san'
+# print(' '.join([a, b]))
+
 ## 每次创建新的对象
 # s = ''
 # for x in lst:
@@ -165,3 +169,42 @@
 # s = 'my name is wangzenghui'
 # print(s.rsplit(' ', 1))
 
+# 配置文件中使用示例
+# line = 'url:http://zenghui.wang'
+# key,value = line.split(':', 1)
+# print(key,value)
+
+# splitlines  按行分割
+# text = """i am tom
+# i am jenk
+# i am jenkins
+# # """
+# print(text.splitlines())
+# ## 保留换行符
+# print(text.splitlines(True))
+
+# 根据指定的分隔符将字符串进行分割（三部分，分隔符前字符+分隔符+分隔符后字符， 默认分隔符为空格）
+# s = 'my name is wangzenghui'
+# print(s.partition(' '))
+
+# line = 'url:http://zenghui.wang'
+# print(line.partition(':'))
+# key, _, value= line.partition(':')
+# print(key,value)
+
+# 从右往左方式  rpartition
+
+# ---- 字符填充(左右) ljust & rjust
+
+#满80个字符，不足的以*填充
+# s = 'my name is wangzenghui'
+# print(s.ljust(80,'*'))
+# print(s.rjust(80,'*'))
+
+
+# ----- strip, lstrip, rstrip
+# s = ' haha, how are you? \n \t'
+# print(s.strip())
+
+s = '#### hahaha ####'
+print(s.strip('#'))
