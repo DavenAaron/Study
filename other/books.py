@@ -193,20 +193,52 @@
 
 
 # 结合使用函数和while循环
-def get_formatted_name(first_name, last_name):
-    full_name = first_name + ' ' + last_name
-    return full_name.title()
+# def get_formatted_name(first_name, last_name):
+#     full_name = first_name + ' ' + last_name
+#     return full_name.title()
+#
+# while True:
+#     print("\nPlease tell me your name:")
+#     print("\nEnter 'q' at any time to quit ! " )
+#
+#     f_name = input("Enter first name: ")
+#     if f_name == 'q':
+#         break
+#
+#     l_name = input("Enter last name: ")
+#     if l_name == 'q':
+#         break
+#     formatted_name = get_formatted_name(f_name, l_name)
+#     print("\nHello, " + formatted_name + "!")
+
+## ---------------------   练习题  ----------------
+
+# def city_country(city, country):
+#     info = city + ',' + country
+#     return info.title()
+#
+# while True:
+#     print("Please enter your city and counrty:")
+#     print("Enter 'q' at any time to quit!")
+#
+#     i_city = input("Enter your city: ")
+#     if i_city == 'q':
+#         break
+#
+#     i_country = input("Enter your country")
+#     if i_country == 'q':
+#         break
+#
+#     formatted_info = city_country(i_city, i_country)
+#     print(formatted_info)
+
+
+def make_album(singer, album, num=' '):
+    i_singer = input("Enter singer's name: ")
+    i_album = input("Enter album: ")
+
+    if not num:
+        i_num = input("Enter num: ")
 
 while True:
-    print("\nPlease tell me your name:")
-    print("\nEnter 'q' at any time to quit ! " )
 
-    f_name = input("Enter first name: ")
-    if f_name == 'q':
-        break
-
-    l_name = input("Enter last name: ")
-    if l_name == 'q':
-        break
-    formatted_name = get_formatted_name(f_name, l_name)
-    print("\nHello, " + formatted_name + "!")
