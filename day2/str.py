@@ -221,6 +221,21 @@
 # s.find('e')
 
 # 将指定元素替换成指定元素 n次
-s = 'abc123abc123'
-print(s.replace('abc','xyz'))
-print(s.replace('123','234',1))
+# s = 'abc123abc123'
+# print(s.replace('abc','xyz'))
+# print(s.replace('123','234',1))
+
+
+# -----  字符格式化
+# name = 'wangzenghui'
+# message = 'i am %s' % (name,)
+# print(message)
+
+# message = 'i am %(name)s' % {'name':'wangzenghui'}
+# print(message)
+
+# message = 'i am %(name)s, my name is %(name)s' % {'name': 'wangzenghui'}
+# print(message)
+
+message = 'i am %s, my name is %s' % ('wangzenghui', 'wangzenghui')
+print(message)
