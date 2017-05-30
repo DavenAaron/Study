@@ -206,5 +206,21 @@
 # s = ' haha, how are you? \n \t'
 # print(s.strip())
 
-s = '#### hahaha ####'
-print(s.strip('#'))
+# s = '#### hahaha ####'
+# print(s.strip('#'))
+
+# ---- endswith
+# s = '####test##'
+# print(s.endswith('test',0,8))
+
+# ---- 查找替换
+# count, find, rfind, index, rindex, replace
+# s = '### test ####'
+# print(s.count('#'))
+# # 查找元素首次出现的位置
+# s.find('e')
+
+# 将指定元素替换成指定元素 n次
+s = 'abc123abc123'
+print(s.replace('abc','xyz'))
+print(s.replace('123','234',1))
