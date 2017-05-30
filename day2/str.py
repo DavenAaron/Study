@@ -135,3 +135,33 @@
 # result = name.swapcase()
 # print(result)
 
+# 连接符 join
+# lst = ['my', 'name', 'is', 'tomcat']
+# print(' '.join(lst))
+# print(','.join(lst))
+
+## 每次创建新的对象
+# s = ''
+# for x in lst:
+#     s += ' ' + x
+# print(s)
+
+# 字符串的分割
+# split，rsplit,splitlines,partition,rpartition
+
+# split 将字符串分割成列表
+# s = 'my name is wangzenghui'
+# print(s.split())
+
+# 指定默认分割字符为is（从左往右分割）
+# s = 'my name is wangzenghui'
+# print(s.split('is'))
+
+# 指定分隔符及其分割次数 (分割次数为-1，则分割所有)
+# s = 'my name is wangzenghui'
+# print(s.split(' ',1))
+
+## --- rsplit   从右往左分割指定次数
+# s = 'my name is wangzenghui'
+# print(s.rsplit(' ', 1))
+
