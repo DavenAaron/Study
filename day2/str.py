@@ -237,5 +237,59 @@
 # message = 'i am %(name)s, my name is %(name)s' % {'name': 'wangzenghui'}
 # print(message)
 
-message = 'i am %s, my name is %s' % ('wangzenghui', 'wangzenghui')
-print(message)
+# message = 'i am %s, my name is %s' % ('wangzenghui', 'wangzenghui')
+# print(message)
+
+## ------------  查找替换 ----------------
+# count,find,rfind,index,rindex,replace
+
+# ---- 字符串替换 replace，
+# s = '123124sdfasfae'
+# print(s.replace('fa','WZ'))
+
+# ---- 统计字符串出现的次数
+# s = 'abc234Abcd'
+# print(s.count('b'))
+
+# ---- 字符串查找 find,rfind
+# s = 'abc234abeab'
+# print(s.find('c'))
+
+# s = 'abc234abeab'
+# print(s.rfind('a'))
+
+# ---- 替换  replace
+# s = 'abc234abeab'
+# print(s.replace('abc','ABC'))
+#
+# # ---- 替换从左往右第一个
+# print(s.replace('ab','AB',1))
+#
+# # ---- 替换所有
+# print(s.replace('ab','AB',-1))
+
+
+# ---------  字符格式化
+# name = 'wangzenghui'
+# message = 'i am %s' % (name,)
+# print(message)
+
+# message = 'i am %(name)s' % {'name':'wangzenghui'}
+# print(message)
+
+# message = 'i am %(name)s, my name is %(name)s' % {'name': 'wangzenghui'}
+# print(message)
+
+# message = 'i am %s, my name is %s' % ('wangzenghui', 'wangzenghui')
+# print(message)
+
+# print('i am %s' % 'tomcat')
+
+
+# --------- format 方法
+# print('i am {}'.format('wangzneghui'))
+# print('i am {}, my age is {}'.format('wangzenghui','18'))
+# print('i am {1}, my age is {0}'.format(18,'wangzenghui'))
+# print('i am {name}, my age is {age}'.format(name='wangzenghui',age=18))
+# print('i am {name}, my name is {name}'.format(name='wanzenghui'))
+
