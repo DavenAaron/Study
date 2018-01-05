@@ -1,3 +1,6 @@
+#####   append, insert, index, remove, del, pop #####
+
+
 # li = list([1,2,3])
 # print(li)
 # li.extend((11,22,))
@@ -10,7 +13,6 @@
 # li = list([1,34,21])
 # li.append(12)
 # print(li)
-
 # 取列表中第0个元素（默认最后一个元素）
 #li = list([1,54,62])
 #print(li.pop(0))   # 取第一个值
@@ -24,12 +26,12 @@
 # print(li)
 
 # 将列表值反转
-# li = [12,34,123,123]
-# li.reverse()
-# print(li)
+#li = [12,34,123,123]
+#li.reverse()
+#print(li)
 
-# 列表元素排序
-# li = [123,34,1,23,142]
+#  列表元素排序
+#  li = [123,34,1,23,142]
 # li.sort()
 # print(li)
 
@@ -48,4 +50,28 @@
 # print(type(li))
 # tu = tuple(li)
 # print(type(tu))
+
+# count 统计列表中指定元素的出现次
+#li = [1,3,4,5,5,343,23]
+#print(li)
+#print(li.count(5))
+
+
+# 统计列表的长度
+#print(len(li))
+
+# sort 列表排序
+li1 = ['b','c','er','df']
+li1.sort()
+print(li1)
+li1.sort(reverse=True)
+print(li1)
+
+# copy 方法
+l2 = ['e','f','c','f','d']
+print(l2)
+l3 = l2.copy()
+print(l3)
+print(id(l2))
+print(id(l3))
 
