@@ -75,3 +75,13 @@ print(l3)
 print(id(l2))
 print(id(l3))
 
+lst1 = [1,4,1,2,23,1231,89,34]
+print(lst1)
+
+print(lst1[4:-1])
+print(lst1[2:])
+
+print(lst1[5:2:-1])
+
+# 从后往前
+print(lst1[::-1])
