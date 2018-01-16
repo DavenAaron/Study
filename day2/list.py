@@ -85,3 +85,67 @@ print(lst1[5:2:-1])
 
 # 从后往前
 print(lst1[::-1])
+
+
+# 对切片赋值，会替换切片原来的元素, 非连续的会抛错。
+l4 = list(range(0,10))
+print(l4)
+## [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+l4[3:5] = ['x']
+print(l4)
+## [0, 1, 2, 'x', 5, 6, 7, 8, 9]
+
+l5 = list(range(0,10))
+print(l5)
+l5[1:6:2] = ['x','y','z']
+print(l5)
+## [0, 'x', 2, 'y', 4, 'z', 6, 7, 8, 9]
+
+# 解包是把集合里的元素赋值给变量， 解包就是吧元素一次性赋值给变量
+# 解包
+x,y = [1,3]
+print(x)
+
+# 封包
+t = 1, 3
+print(t)
+
+x, y = y, x
+print(x)
+print(y)
+
+head, *tail = list(range(0,10))
+print(head)
+## 0
+print(tail)
+## [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def it(lst):
+    head, *tail = lst
+    print(head)
+    it(tail)
+
+h, *t = [1, 2]
+print(t)
+
+h, *t = [23,34,34]
+print(t)
+print(h)
+
+head, *mid, tail = [1, 2, 3, 4, 5]
+print(head)
+print(mid)
+print(tail)
+
+lst = list(range(10))
+print(lst)
+a, b, _, c, *_ = lst
+print(lst)
+print(a)
+print(b)
+print(c)
+
+h, *_, t = lst
+print(h)
+print(t)

@@ -1,3 +1,26 @@
+# unicode 序列， byte序列， 字符串是不可变的
+
+s = 'wangzenghui'
+print(s)
+print(s[1])
+
+# 字符串连接
+help(str.join)
+
+lst = ['my', 'name', 'is ', 'wang']
+print(lst)
+print(' '.join(lst))
+print(','.join(lst))
+print('my' + ' name')
+
+# 字符串分割
+s1 = 'my name is wangzenghui'
+print(s1.split('is'))
+print(s1.split(' ', 1))
+print(s1.split(' ',2))
+print(s1.split(' ', -1))
+
+print(s1.rsplit(' ',1))
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
