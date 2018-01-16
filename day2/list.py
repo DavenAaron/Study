@@ -149,3 +149,24 @@ print(c)
 h, *_, t = lst
 print(h)
 print(t)
+
+lst = [1, [2,3], 4]
+a, (b,c), d = lst
+print(a)
+print(d)
+
+lst = [1,[2,3,4,5,6], 7]
+a, (b, *_, c), d= lst
+print(a)
+print(b)
+print(c)
+print(d)
+
+a, b, c, _, *_ = [1,2,3,4,5,6]
+print(a)
+print(b)
+print(c)
+
+a, *_, b = [1,2]
+print(a)
+print(b)

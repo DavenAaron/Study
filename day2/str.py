@@ -13,7 +13,7 @@ print(' '.join(lst))
 print(','.join(lst))
 print('my' + ' name')
 
-# 字符串分割
+# 字符串分割  split rsplit splitlines partition rpartition
 s1 = 'my name is wangzenghui'
 print(s1.split('is'))
 print(s1.split(' ', 1))
@@ -21,6 +21,14 @@ print(s1.split(' ',2))
 print(s1.split(' ', -1))
 
 print(s1.rsplit(' ',1))
+
+# 反转
+print(s[::-1])
+
+h, *_ = s
+print(h)
+h, _, e, *_ = s
+print(e)
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
@@ -316,4 +324,3 @@ print(s1.rsplit(' ',1))
 # print('i am {name}, my age is {age}'.format(name='wangzenghui',age=18))
 # print('i am {name}, my name is {name}'.format(name='wanzenghui'))
 
-8--- 23
