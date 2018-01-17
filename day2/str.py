@@ -30,6 +30,104 @@ print(h)
 h, _, e, *_ = s
 print(e)
 
+s2 = 'my name is zenghui'
+print(s2)
+print(s2.split(' ',2))
+
+a = 'wangzeng'
+b= 'hui'
+
+print(' '.join([a, b]))
+## wangzeng hui
+
+url = "url:http://www.zenghui.wang"
+print(url)
+print(url.split(':',1))
+key, value =url.split(':', 1)
+print(key)
+print(value)
+
+st3 = """i am tom 
+how are you
+and you
+"""
+print(st3)
+
+s = "my name is tomcat"
+print(s)
+print(s.partition(' '))
+
+url = 'url:http://www.zenghui.wang'
+print(url.partition(':'))
+key, _, value = url.partition(':')
+print(key)
+print(value)
+print(url.split('//'))
+a, b = url.split('//')
+print(a)
+print(b)
+
+s = 'my name is wangzengHUI'
+# 大写
+print(s.upper())
+# 首字母大写
+print(s.capitalize())
+# 首字母大写
+print(s.title())
+# 小写
+print(s.lower())
+
+# 大小写转化通常用在做比较的时候, 通常同意转化为全部大写或者全部小写在做比较。
+print(s.upper().lower())
+
+# 大小写互换
+print(s.swapcase())
+
+#####  程序世界的修改 ####
+print(s)
+help(s.center)
+# 填充
+print(s.center(80))
+#                               my name is wangzengHUI
+print(s.center(80, '#'))
+#############################my name is wangzengHUI#############################
+
+# 右补全
+print(s.ljust(80, '#'))
+
+# 左补全
+print(s.rjust(80, '#'))
+
+#  用0来填充
+help(s.zfill)
+print(s.zfill(80))
+
+help(s.strip)
+s = ' hahha nihao \n \t'
+print(s.strip())
+
+print(s.lstrip())
+print(s.rstrip())
+
+s = '##test##'
+print(s.strip('#'))
+
+
+##############    查找替换     ###########
+s = 'my name is tomcat'
+# 统计指定字符在字符串中的出现次数
+print(s.count('i'))
+
+print(s.find('t'))
+
+print(s.index('t'))
+
+# replace 替换
+s = 'abc123abc123'
+print(s.replace('abc','ABC'))
+print(s.replace('ab','ABC',1))
+
+
 # 是否包含 __contains__
 # name = 'wangzenghui'
 # print(name.__contains__('zenghui'))
