@@ -112,7 +112,6 @@ print(s.rstrip())
 s = '##test##'
 print(s.strip('#'))
 
-
 ##############    查找替换     ###########
 s = 'my name is tomcat'
 # 统计指定字符在字符串中的出现次数
@@ -127,6 +126,7 @@ s = 'abc123abc123'
 print(s.replace('abc','ABC'))
 print(s.replace('ab','ABC',1))
 
+print(s[1:3])
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
