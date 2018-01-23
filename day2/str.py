@@ -154,9 +154,9 @@ print('{0:<80}'.format('zenghui'))
 
 print('{0:+}'.format(10))
 # '+10'
-# print('{0:+}'.format(-10))
+print('{0:+}'.format(-10))
 #  '-10'
-# print('{0:1}'.format(10))
+print('{0:1}'.format(10))
 #  '10'
 print('{0:-}'.format(10))
 # '10'
@@ -170,6 +170,7 @@ f = open('/dir/file')
 buf = f.read()
 s=buf.decode('GBK')
 type(buf)
+
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
