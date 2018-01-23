@@ -125,8 +125,31 @@ print(s.index('t'))
 s = 'abc123abc123'
 print(s.replace('abc','ABC'))
 print(s.replace('ab','ABC',1))
-
 print(s[1:3])
+
+######  字符串格式化 ######
+'i am %s' % ('tom',)
+'i am %s' % 'comyn'
+'i am %s， %s old' % ('tomcat', '19')
+
+## fromat 方法
+'i am {}'.format('tom')
+# 'i am tom'
+'i am {}, my age is {}'.format('tomat',18)
+# 'i am tomat, my age is 18'
+'i am {1}, my age is {0}'.format(18, 'tomm')
+# 'i am tomm, my age is 18'
+'i am {name}, my age is {age}.'.format(name='tomy',age=18)
+# 'i am tomy, my age is 18.'
+'my name is {}, i am {age} years old, i am a {}'.format('tom','boy',age=19)
+# 'my name is tom, i am 19 years old, i am a boy'
+
+
+
+
+
+
+
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
