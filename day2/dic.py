@@ -61,12 +61,83 @@ print(a.isdisjoint(b))
 ####  集合的应用 #####
 
 # 元素需要唯一而对顺序没有需求
-hosts = set(user_input.splitlines())
+# hosts = set(user_input.splitlines())
 
 # 我们需要集合运算时
 
------ 集合的应用
+######  字典与字典的增删查改  ####
 
+# 字典声明
+d = {'name':'wangzengui','age':'19'}
+print(d)
+# 设置元素默认值
+d.setdefault('from','rizhao')
+print(d.get('from'))
+print(d['from'])
+# 访问字典中的值
+print("dname:", d['name'])
+# 修改字典(新增/更新)
+d['from'] = 'shandong'
+d['age'] = 20
+print(d)
+
+# ---  字典内置的函数和方法   ----
+# 字典元素的个数， 即键的总数
+dict1 = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(len(dict1))
+
+# --- 字典包含的内置方法 ---
+# 删除字典内的所有元素
+dict2 = {'name': 'wangzenghui','Age':19,'Class':'First'}
+dict2.clear()
+print(dict2)
+
+# 字典的浅复制
+dict3 = {'name': 'wangzenghui','Age':19,'Class':'First'}
+dict4 = dict3.copy()
+print(dict4)
+
+# 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值
+seq = ('name', 'age', 'sex')
+dict = dict.fromkeys(seq)
+print("new dict: %s" % str(dict))
+dict = dict.fromkeys(seq, 43)
+# - 应用 
+print(d.fromkeys([1,2,3], False))
+hosts = [1,2,3]
+print(dict.fromkeys(hosts, False))
+
+#  以列表返回可遍历的(键, 值) 元组数组
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(dict.items())
+
+# 以列表返回字典所有keys/values
+print(dict.keys())
+print(dict.values())
+
+# 返回指定键的值，如果值不在字典中返回default值
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(dict.get('name', 'tomcat'))
+print(dict.get('from', 'beijing'))
+
+# 和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(dict.setdefault('name', 'king'))
+print(dict.setdefault('from', 'beijing'))
+print(dict)
+
+# update() 将字典dict1的键值更新到dict里
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+dict1.update(dict)
+print(dict1)
+
+# pop(key[,default]) 删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(dict.pop('name'))
+
+# popitem() 随机返回并删除字典中的一对键值（一般是末尾对）
+dict = {'name': 'wangzenghui','Age':19,'Class':'First'}
+print(dict.popitem())
 
 
 # dic = {'k1':'v1','k2':'v2'}
