@@ -125,18 +125,8 @@ print(s.index('t'))
 s = 'abc123abc123'
 print(s.replace('abc','ABC'))
 print(s.replace('ab','ABC',1))
+
 print(s[1:3])
-
-#######   字符串格式化   #########
-print('i am %s' % ('tom'))
-print('i am %(name)s' % {'name':'tomcat'})
-print('my name is %(name)s, how are you %(name)s' % {'name':'tomm'})
-print('hell %s, my name is %s' %('tom','keven'))
-
-print('%d' % 18)
-print('%s' % 'tom' )
-
-内置数据结构 - 07
 
 # 是否包含 __contains__
 # name = 'wangzenghui'
