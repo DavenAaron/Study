@@ -157,5 +157,101 @@ print(lst[::-1])      # 反转
 lst = list(range(0, 10))
 print(lst[0::2])
 
+# 对切片赋值，会替换切片原来的元素
+
+#### ---- 解包封包 ---- ####
+# 解包是把集合里的元素赋值给变量，
+# 封包是把变量构建成元组
+# 封包
+def swap(a,b):
+    a, b = b, a
+    return (a, b)
+print(swap(1,3))
+
+x = 1
+y = 3
+x, y = y,x
+print(x)
+print(y)
+
+t = 1,2,3,5
+print(t)
+
+# 解包
+lst = [1, 2, 45, 23, 41, 49]
+
+head, *tail = list(range(0, 10))
+head, *mid, tail = [1, 3, 5 ,5, 8]
+a, b, _, c, *_ = lst
+
+lst = [1, [2, 3], 4]
+a, (b, c), d = lst
+
+lst = [1, [2,4,5,6,20], 10]
+a, (b, *_, c), d = lst
+
+#### ---- 字符串 ---- ####
+# python3中是一个unicode序列， python2中是一个byte序列， 是一种数据结构,不可变对象
+
+s = 'hello world'
+
+# jobin 连接
+lst = ['my', 'name', 'is', 'tomcat']
+print(' '.join(lst))
+print(','.join(lst))
+
+# splite/rsplite, splitelines, partition, rpartition
+s = 'my name is tomcat'
+help(s.split())
+print(s.split())
+print(s.split('is'))
+print(s.split(' ', 2))
+print(s.split(' ', -1))
+
+# 用法实例：
+line = 'url:http://www.zenghui.wang'
+print(line.split(':', 1))
+key, value = line.split(':', 1)
+print(key)
+print(value)
+
+line = 'url:http://www.zenghui.wang'
+print(line.partition(':'))
+key, *_, value = line.partition(':')
+print(key)
+print(value)
+
+# capitalize 首字母大写
+print(s.capitalize())
+
+# title 所有字符首字母大写
+print(s.title())
+
+# lower 小写
+# upper 大写
+# swapcase 大小写转换
 
 
+#### ---- 程序世界的修改 ---- ####
+
+# center 填充， 默认空格
+s = 'my name is tomcat'
+print(s.center(80))
+print(s.center(80,'#'))
+
+# ljust/rjust 左/右填充
+print(s.ljust(80))
+print(s.ljust(80, '#'))
+print(s.ljust(80) + '01')
+
+# 0 填充
+print(s.zfill(80))
+
+# strip, lstrip, rstrip
+s = ' hahaha ## nihao \n \t'
+print(s.strip())
+print(s.lstrip())
+print(s.rstrip())
+
+s = '## test ##'
+print(s.strip('#'))
