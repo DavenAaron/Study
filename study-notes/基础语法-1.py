@@ -255,3 +255,42 @@ print(s.rstrip())
 
 s = '## test ##'
 print(s.strip('#'))
+
+#### ---- 查找替换 ---- ####
+# count、find、rfind、index、rindex、replice
+# find 与index的区别： index 不存在抛错， find输出-1
+s = 'my name is namee'
+print(s.count('a'))
+print(s.find('a'))
+
+# replace 替换
+s = 'abc123abc123'
+print(s.replace('abc','ZXY'))
+print(s.replace('abc','AYX',1))
+
+#### ---- 字符串格式化 ---- ####
+print('i am %s' %('tomcat'))
+print('i am %(name)s, my name is %(name)s' %{'name':'tomcat'})
+print('i am %s, %s years old.' %('tomcat','18'))
+
+# format 方法 (涉及到位置需要统一)
+print('i am {}'.format('tomcat'))
+print('i am {}, my age is {}'.format('tomcat',18))
+print('i am {1}, my age is {0}'.format(18,'tomcat'))
+print('i am {name}, my age is {age}'.format(name='tomcaat', age=181))
+print('i am {name}, my name is {name}'.format(name="tomcatba"))
+print('i am {0}, my name is {0}'.format('tommm'))
+print('{} {} {name}'.format(1,2,name="hah"))
+print('{} {name} {}'.format(1,2, name="hahaba"))
+
+lst = [1,2,3]
+print('{0[1]}'.format(lst))
+
+print('{0:^20}'.format('中国'))
+print('{0:<20}'.format('中国'))
+print('{0:>20}'.format('中国'))
+
+# - 号为默认，不显示符号位。
+print('{0:+}'.format(10))
+print('{0:{fill}^{width}}'.format('tommm', width=80,  fill='*'))
+
