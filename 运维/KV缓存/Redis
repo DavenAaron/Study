@@ -1,0 +1,50 @@
+一： redis-cluster设计
+redis-cluster采用无中心结构，每个节点保存数据和整个集群状态，没个节点都喝其他所有节点连接
+
+特点如下：
+    1、所有redis节点彼此互联（PING-PONG机制），内存使用二进制协议优化传输速度和带宽。
+    2、节点的fail是通过集群中超过半数的节点检测失效时才生效。
+    3、客户端与redis节点直连，不需要中间proxy层， 客户端不需要连接集群所有节点，其中之一即可。
+    4、redis-cluster 把所有的物理节点映射到[0-16383]slot上，不一定平均分配，cluster负责维护node-slot-value
+    5、redis-cluster预分好16384个桶，当需要再redis集群中防止一个key-value时， 根据哈希槽算法分配key到桶中。
+
+
+1、Redis cluster节点分配：
+Tcp Port
+    每个Redis Cluster中的节点需要建立两个TCP 连接，一个端口用于服务客户端（Command port），例如6379；另一个端口是数据端口（Cluster bus port），在前一个端口上加10000，如16379，该端口主要用于集群总线，这是一个用binary协议进行集群节点间通讯的通道。集群总线用于节点的故障决策，配置更新，故障转移，数据交互等等。客户端不要尝试去和集群总线的端口进行通讯，并且保证这两个端口在防火墙中是开启状态，否则Reis 集群不能正常的工作。Command port 和Cluser bus port总是相差10000。
+Redis集群数据分区
+    Redis Cluster没用用一致性哈希算法，而是一种不同的分区形式，每一个Key概念上都属于我们称为hash slot(hash槽)的一部分。在Redis Cluster中有16384个hash slot，通过key的CRC16的值取模16384来计算每个key所属的hash slot。
+
+在Redis Cluster中每个节点负责hash槽的部分子集，比如下面一个集群节点的hash slots分布：
+    NodeA 包含 0 - 5000的hash slots.
+    NodeB 包含 5001 - 10000的hash slots.
+    NodeC 包含 10001 - 16383的hash slots
+
+    新增节点，则从没个Node中平均取组成。
+
+2、Redis cluster主从模式
+    为了实现Redis集群当少数master节点出现故障或者无法与多数节点通讯时依旧能够正常提供服务，Redis集群用了master/slave模式，这样每个hash slot都有1（master节点本身）到N个冗余（N-1为slave节点的个数）
+
+3、Redis集群一致性保证
+    无法提供强一致性，主从同步在异步模式下（不回返回确认ok），可能丢失数据；
+
+4、Redis集群的配置参数：
+    cluster-enable <yes/no>             Cluster模式、普通模式
+    cluster-confile-file <filename>     记录当前节点以及整个集群节点等信息（配置文件指定， 程序自动创建）
+    cluster-node-timeout <毫秒数>        node在被认为失效之前，允许不可用的最长时间。如果Master处于“不可达”的时间超过此值，将会被failover
+    cluster-migration-barrier <count>   master需要保留的slaves的最少个数；
+    cluster-require-full-coverage <yes/no>    “集群是否需要全量覆盖”，如果设置为yes（默认值），当集群中有slots没有被任何node覆盖（通常是由于某个master失效，但是它也没有slave接管时），集群将会终止接收writes请求；如果设置为no，集群中那些服务正常的nodes（slots）仍然可以继续服务。
+    cluster-slave-validity-factor <factor>    用于限定slave于master的失联时长的倍数；如果设置为0，slave总是尝试failover，不管master与slave之间的链接断开多久（即只要slave无法与master通讯，都会尝试进行failover；Cluster有选举机制，有可能会被否决）；如果此值为正值，则失联的最大时长为：factor * node timeout，当失联时长超过此值后，slave触发failover。比如node timeout为5秒，factor为10，那么当slave与master失联超过50秒时，slave将会尽力尝试failover。此值需要合理设置，也会对集群有效性、数据一致性产生影响。
+
+
+二： redis 主从复制
+1、redis 主从的复制过程原理
+    a、当从库跟主库建立master-slave关系后，会向主数据库发送SYNC命令；
+    b、主库接收到SYNC命令后 会开始再后台保存快照（RDB持久化过程），并将期间接收到写命令缓存起来。
+    c、当快照完成后，主Redis会将快照文件和所有缓存的命令发送给redis。
+    d、从Redis接收到后，会再儒道快照文件并且执行收到的缓存的命令。
+    e、之后，主redis每当接收到命令时，就会将命令发送给Redis，从而保持数据的一致。
+
+2、Sentinel 监控
+    a、监控主从Redis运行是否正常；
+    b、Master出现故障后，自动将Slave 提升为Master；
