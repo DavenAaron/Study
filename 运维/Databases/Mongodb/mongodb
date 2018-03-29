@@ -1,0 +1,20 @@
+一：mongoDB 副本集
+1、副本集就是mongoDB 副本所组成的一个集群。写操作发生在主库，从库同步主库的oplog日志，集群中没有特定的主库，主库由选举产生
+
+2、副本集有如下特点：
+    a、最小构成： primary，secondary，arbiter， 一般部署为 primary + 2 secondary；
+    b、成员数应该是奇数， 如果为偶数的情况下添加arbiter，arbiter不保存数据， 只投票。
+    c、最大50 members， 但是只能有7 voting members， 其他都是non-voting members
+
+3、副本集中数据同步过程：
+Primary节点写入数据，Secondary通过读取Primary的oplog得到复制信息，开始复制数据并且将复制信息写入到自己的oplog。如果某个操作失败，则备份节点停止从当前数据源复制数据。如果某个备份节点由于某些原因挂掉了，当重新启动后，就会自动从oplog的最后一个操作开始同步，同步完成后，将信息写入自己的oplog，由于复制操作是先复制数据，复制完成后再写入oplog，有可能相同的操作会同步两份，不过MongoDB在设计之初就考虑到这个问题，将oplog的同一个操作执行多次，与执行一次的效果是一样的。
+
+简单的说就是：
+
+在同一时刻只有一台服务器是可以写入的，副本集的主从复制也是一个异步同步的过程，是slave从primary获取日志，然后在自己身上完全顺序的执行日志所记录的各种操作；
+这个日志就是local数据库中的oplog.rs表，oplog.rs的大小可以再启动参数中设定： --oplogSize 1000 M
+
+当Primary节点完成数据操作后，Secondary会做出一系列的动作保证数据的同步：
+a：检查自己local库的oplog.rs集合找出最近的时间戳。
+b：检查Primary节点local库oplog.rs集合，找出大于此时间戳的记录。
+c：将找到的记录插入到自己的oplog.rs集合中，并执行这些操作。
